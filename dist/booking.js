@@ -4842,9 +4842,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ }),
 /* 35 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-	'use strict';
+	/* WEBPACK VAR INJECTION */(function(Promise) {'use strict';
 	
 	/*
 	 * Default configuration
@@ -4885,6 +4885,30 @@ return /******/ (function(modules) { // webpackBootstrap
 	    allDaySlot: false,
 	    scrollTime: '08:00:00',
 	    nowIndicator: true
+	  },
+	  createBooking: function(args) {
+	    return Promise.resolve('BOOKING SUCCESS')
+	  },
+	  fetchAvailability: function() {
+	    return Promise.resolve({
+	      "data" : [{
+	          "start": "2020-04-09T18:00:00.000+02:00",
+	          "end": "2020-04-09T19:00:00.000+02:00",
+	          "resources": [ {"id": "cca33050-2adf-4bf5-86e3-e989d6974b41"} ]
+	        }, {
+	          "start": "2020-04-10T19:00:00.000+02:00",
+	          "end": "2020-04-10T20:00:00.000+02:00",
+	          "resources": [ {"id": "cca33050-2adf-4bf5-86e3-e989d6974b41"} ]
+	        }, {
+	          "start": "2020-04-10T20:00:00.000+02:00",
+	          "end": "2020-04-10T21:00:00.000+02:00",
+	          "resources": [ {"id": "cca33050-2adf-4bf5-86e3-e989d6974b41"} ]
+	        }, {
+	          "start": "2020-04-10T21:00:00.000+02:00",
+	          "end": "2020-04-10T22:00:00.000+02:00",
+	          "resources": [ {"id": "cca33050-2adf-4bf5-86e3-e989d6974b41"} ]
+	        }]
+	    })
 	  }
 	};
 	
@@ -4918,6 +4942,30 @@ return /******/ (function(modules) { // webpackBootstrap
 	      format: 'email',
 	      required: true
 	    }
+	  },
+	  createBooking: function(args) {
+	    return Promise.resolve('BOOKING SUCCESS')
+	  },
+	  fetchAvailability: function() {
+	    return Promise.resolve({
+	      "data" : [{
+	          "start": "2020-04-09T18:00:00.000+02:00",
+	          "end": "2020-04-09T19:00:00.000+02:00",
+	          "resources": [ {"id": "cca33050-2adf-4bf5-86e3-e989d6974b41"} ]
+	        }, {
+	          "start": "2020-04-10T19:00:00.000+02:00",
+	          "end": "2020-04-10T20:00:00.000+02:00",
+	          "resources": [ {"id": "cca33050-2adf-4bf5-86e3-e989d6974b41"} ]
+	        }, {
+	          "start": "2020-04-10T20:00:00.000+02:00",
+	          "end": "2020-04-10T21:00:00.000+02:00",
+	          "resources": [ {"id": "cca33050-2adf-4bf5-86e3-e989d6974b41"} ]
+	        }, {
+	          "start": "2020-04-10T21:00:00.000+02:00",
+	          "end": "2020-04-10T22:00:00.000+02:00",
+	          "resources": [ {"id": "cca33050-2adf-4bf5-86e3-e989d6974b41"} ]
+	        }]
+	    })
 	  }
 	}
 	
@@ -5015,7 +5063,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	  }
 	};
-
+	
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ }),
 /* 36 */
