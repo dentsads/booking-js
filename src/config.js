@@ -65,9 +65,6 @@ function InitConfig() {
     // Set default formats for native fields
     newConfig = setCustomerFieldsNativeFormats(newConfig)
 
-    // Check for required settings
-    if (!newConfig.app_key) throw 'A required config setting ("app_key") was missing';
-
     // Prefill fields based on query string
     var urlParams = getGlobal().location && getGlobal().location.search;
     if (urlParams) newConfig = applyPrefillFromUrlGetParams(newConfig, qs.parse(urlParams));

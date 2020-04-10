@@ -4799,9 +4799,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    // Set default formats for native fields
 	    newConfig = setCustomerFieldsNativeFormats(newConfig)
 	
-	    // Check for required settings
-	    if (!newConfig.app_key) throw 'A required config setting ("app_key") was missing';
-	
 	    // Prefill fields based on query string
 	    var urlParams = getGlobal().location && getGlobal().location.search;
 	    if (urlParams) newConfig = applyPrefillFromUrlGetParams(newConfig, qs.parse(urlParams));
@@ -5271,12 +5268,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	    utils.doCallback('fetchAvailabilityStarted', args);
 	
-	    sdk
-	    .makeRequest({
-	      method: 'post',
-	      url: '/availability',
-	      data: args
-	    })
+	    var request = getConfig().fetchAvailability(args)
+	
+	    request
 	    .then(function(response){
 	
 	      utils.doCallback('fetchAvailabilitySuccessful', response);
@@ -5286,12 +5280,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	      if(response.data.length > 0) renderCalendarEvents(response.data);
 	
 	      // Render test ribbon if enabled
-	      if (response.headers['timekit-testmode']) renderTestModeRibbon();
+	      //if (response.headers['timekit-testmode']) renderTestModeRibbon();
 	
 	    }).catch(function(response){
 	      utils.doCallback('fetchAvailabilityFailed', response);
 	      hideLoadingScreen();
-	      triggerError(['An error with Timekit Fetch Availability occured', response]);
+	      triggerError(['An error while fetching availability occured', response]);
 	    });
 	
 	  };
@@ -5933,17 +5927,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	
 	    utils.doCallback('createBookingStarted', args);
 	
-	    var request = sdk
-	    .include(getConfig().create_booking_response_include)
-	    .createBooking(args);
+	    var request = getConfig().createBooking(args)
 	
 	    request
 	    .then(function(response){
 	      utils.doCallback('createBookingSuccessful', response);
 	    }).catch(function(response){
 	      utils.doCallback('createBookingFailed', response);
-	      triggerError(['An error with Timekit Create Booking occured', response]);
-	    });
+	      triggerError(['An error while creating booking occured', response]);
+	    }); 
 	
 	    return request;
 	
