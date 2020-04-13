@@ -571,6 +571,8 @@ function InitRender(deps) {
       bookingPageTarget.addClass('show');
     }, 100);
 
+    utils.doCallback('bookingPageRenderedCompleted');
+
   };
 
   // Output timestamp into given format in customers timezone
